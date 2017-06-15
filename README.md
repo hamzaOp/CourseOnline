@@ -4,6 +4,7 @@
 
 ### How to start the application ###
 
+`$ bundle exex rake db:migrate RAILS_ENV=development`
 `$ Rails server`
 
 ### Live demo ###
