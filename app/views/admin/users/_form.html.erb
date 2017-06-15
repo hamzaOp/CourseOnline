@@ -1,0 +1,21 @@
+<%= simple_form_for [:admin, user] do |f| %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :admin, label: "Is an admin?" %>
+    <header>
+      <h2>Roles</h2>
+    </header>
+    <table class="roles">
+      <% courses.each do |course| %>
+          <tr>
+            <th><%= label_tag dom_id(course), course.name %></th>
+            <td>
+              <%= select_tag dom_id(course), options_for_select(roles,
+                                                                 user.role_on(course)), name: "roles[#{course.id}]",
+                             include_blank: true %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+    <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
